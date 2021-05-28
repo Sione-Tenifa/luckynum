@@ -28,7 +28,7 @@ def lucky_num():
     color = request.json["color"]
     email = request.json["email"]
     
-    print(name)
+    # print(name)
     
     if "email" not in request.json or request.json["email"] is "":
         errors["error"]["email"] = "Email is required"
@@ -44,22 +44,28 @@ def lucky_num():
         errors["error"]["color"] = "Invalid color."
 
     if len(errors["error"]) != 0:
-        print(errors["error"])
+        # print(errors["error"])
         res_obj = errors
         res_json = jsonify(res_obj)
+        # print(res_json)
         return res_json
 
     else:
-        
+
         random_fact = requests.get(f'http://numbersapi.com/{random_num}/trivia')
         print(random_fact)
         input_year = requests.get(f'http://numbersapi.com/{year}/year')
 
-        res_obj = {"num" : {"fact" : random_fact.text, "num" : random_num},
-                           "year" : {"fact" : input_year.text, "year" : year }
-                          }
+        res_obj = {
+            "num" : {
+                    "fact" : random_fact.text, 
+                    "num" : random_num},
+            "year" : {
+                    "fact" : input_year.text, 
+                    "year" : year }
+                     }
         res_json = jsonify(res_obj)
-        print(res_json)
+        print(res_json.data)
         return res_json
 
 
