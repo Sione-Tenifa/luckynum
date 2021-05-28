@@ -1,7 +1,7 @@
-import requests
+# import requests
 
-term = "Madonna"
+# term = "Madonna"
 
-res = requests.get(
-    'http://numbersapi.com/#1989/year', params={'term': term, 'limit': 5})
+# res = requests.get(
+#     'http://numbersapi.com/#1989/year', params={'term': term, 'limit': 5})
 
